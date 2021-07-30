@@ -14,7 +14,7 @@ model = dict(
             min_bbox_size=0),
         rcnn=dict(
             score_thr=0.6,
-            nms=dict(type='nms', iou_threshold=0.5),
+            nms=dict(type='nms', iou_threshold=0.5),          # NOTE : base 训练先不跟猪舍盘估项目改head参数
             max_per_img=100,
             mask_thr_binary=0.5))
         )
@@ -22,8 +22,8 @@ model = dict(
 # Modify dataset related settings
 dataset_type = 'COCODataset'
 dir_1 = "../dataset/1all_dorm+cut_safe/"
-dir_1_1 = "../dataset/1BYZ_dorm+cut_safe/"
-dir_roi = "../dataset/1BYZ_dorm_roi+cut_safe/"   #有头有尾
+dir_1_1 = "../dataset/1all_dorm_BYZ+cut_safe/"
+dir_roi = "../dataset/1all_dorm_BYZ_roi+cut_safe/"   #有头有尾
 dir_1_2 = "../dataset/1huiyan_dorm_raw+cut_safe/"
 dir_roi_1 = "../dataset/1huiyan_dorm_roi+cut_safe/"   #有头有尾
 dir_2 = "../dataset/2all_passage+cut_safe/"
@@ -38,7 +38,7 @@ pig_dirs = [dir_1, dir_1_1, dir_1_2, dir_2, dir_3, dir_4, dir_4_1]
 pig_head_hip_dirs = [dir_roi, dir_roi_1, dir_4, dir_4_1]
 safe_pigs_prefix_train = [i+'/train/' for i in pig_dirs]
 safe_pigs_prefix_val = [i+'/val/' for i in pig_dirs]
-safe_pigs_ann_train = [i+'/annotation_coco.json' for i in safe_pigs_prefix_train]
+safe_pigs_ann_train = [i+'/annotation_coco.json' for i in safe_pigs_prefix_train]   # NOTE: negative samples, empty gt, 负样本手动加到ann了吗！
 safe_pigs_ann_val = [i+'/annotation_coco.json' for i in safe_pigs_prefix_val]
 # head and hip
 safe_head_and_hip_prefix_train = [i+'/train/' for i in pig_head_hip_dirs]

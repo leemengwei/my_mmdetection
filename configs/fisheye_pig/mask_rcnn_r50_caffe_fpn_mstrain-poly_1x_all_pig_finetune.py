@@ -3,6 +3,7 @@ _base_ = '../mask_rcnn/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_coco.py'
 classes=('pig', 'person') 
 
 model = dict(
+    pretrained=None,
     roi_head=dict(
         bbox_head=dict(num_classes=len(classes)),
         mask_head=dict(num_classes=len(classes))),

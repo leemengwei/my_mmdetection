@@ -29,9 +29,7 @@ dir_roi_1 = "../dataset/1huiyan_dorm_roi+cut_safe/"   #有头有尾
 dir_2 = "../dataset/2all_passage+cut_safe/"
 dir_3 = "../dataset/3all_stage+cut_safe/"
 dir_4 = "../dataset/4all_weights+cut_safe/"   #有头有尾
-dir_4_1 = "../dataset/4all_weights+BYZ+cut_safe/"   #有头有尾
-dir_ = "../dataset/4all_weights+BYZ_nO/"
-dir_ = "../dataset/5misc_background+noise/"
+dir_4_1 = "../dataset/4all_weights_BYZ_roi+cut_safe/"   #有头有尾
 
 # pigs
 pig_dirs = [dir_1, dir_1_1, dir_1_2, dir_2, dir_3, dir_4, dir_4_1]

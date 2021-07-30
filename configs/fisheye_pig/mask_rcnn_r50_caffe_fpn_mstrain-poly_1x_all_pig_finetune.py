@@ -40,7 +40,7 @@ pig_dirs = [dir_1_1]
 pig_head_hip_dirs = [dir_roi, dir_roi_1, dir_4, dir_4_1]
 safe_pigs_prefix_train = [i+'/train/' for i in pig_dirs]
 safe_pigs_prefix_val = [i+'/val/' for i in pig_dirs]
-safe_pigs_ann_train = [i+'/annotation_coco_neg.json' for i in safe_pigs_prefix_train]
+safe_pigs_ann_train = [i+'/annotation_coco.json' for i in safe_pigs_prefix_train]
 safe_pigs_ann_val = [i+'/annotation_coco.json' for i in safe_pigs_prefix_val]
 # head and hip
 safe_head_and_hip_prefix_train = [i+'/train/' for i in pig_head_hip_dirs]

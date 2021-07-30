@@ -201,8 +201,8 @@ data = dict(
         ],
         classes=classes))
 
-# load_from = '~/useful_models/base_model_pig.pth'
-load_from = '~/useful_models/epoch_10_BYZ_yufei_pig_fintune.pth'
+# load_from = '/home/lmw/useful_models/base_model_pig.pth'
+load_from = '/home/lmw/useful_models/epoch_10_BYZ_yufei_pig_fintune.pth'
 optimizer = dict(type='SGD', lr=0.01*0.1, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=None)
 # learning policy

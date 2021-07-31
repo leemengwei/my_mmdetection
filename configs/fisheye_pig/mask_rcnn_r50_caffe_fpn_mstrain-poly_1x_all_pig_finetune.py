@@ -31,17 +31,17 @@ model = dict(
 dataset_type = 'COCODataset'
 dir_1 = "../dataset/1all_dorm+cut_safe/"
 dir_1_1 = "../dataset/1all_dorm_BYZ+cut_safe/"
-dir_roi = "../dataset/1all_dorm_BYZ_roi+cut_safe/"   #有头有尾
 dir_1_2 = "../dataset/1huiyan_dorm_raw+cut_safe/"
-dir_roi_1 = "../dataset/1huiyan_dorm_roi+cut_safe/"   #有头有尾
 dir_2 = "../dataset/2all_passage+cut_safe/"
 dir_3 = "../dataset/3all_stage+cut_safe/"
-dir_4 = "../dataset/4all_weights+cut_safe/"   #有头有尾
-dir_4_1 = "../dataset/4all_weights_BYZ_roi+cut_safe/"   #有头有尾
+dir_4 = "../dataset/4all_weights+cut_safe/"   #虽然不是roi cut但是有头有尾
+dir_roi = "../dataset/1all_dorm_BYZ_roi+cut_safe/"   #有头有尾
+dir_roi_1 = "../dataset/1huiyan_dorm_roi+cut_safe/"   #有头有尾
+dir_roi_3 = "../dataset/4all_weights_BYZ_roi+cut_safe/"   #有头有尾
 
 # pigs
-pig_dirs = [dir_1, dir_1_1, dir_1_2, dir_2, dir_3, dir_4, dir_4_1]
-pig_head_hip_dirs = [dir_roi, dir_roi_1, dir_4, dir_4_1]
+pig_dirs = [dir_1, dir_1_1, dir_1_2, dir_2, dir_3, dir_4]
+pig_head_hip_dirs = [dir_roi, dir_roi_1, dir_4]
 pig_dirs = [dir_1_1]
 safe_pigs_prefix_train = [i+'/train/' for i in pig_dirs]
 safe_pigs_prefix_val = [i+'/val/' for i in pig_dirs]
@@ -208,7 +208,7 @@ data = dict(
 
 # load_from = '/home/lmw/useful_models/base_model_pig.pth'
 load_from = '/home/lmw/useful_models/epoch_10_BYZ_yufei_pig_fintune.pth'
-optimizer = dict(type='SGD', lr=0.01*0.1, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.001*0.1, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict(

@@ -15,9 +15,9 @@ model = dict(
         # # 有 IOF
         # rcnn=dict(
         #     score_thr=0.5,
-        #     nms=dict(type='nms', iou_threshold=0.6),    # 从实际情况看到：至少0.5 bbox iou是绝对不够的(随便看就好几副卡去的), 但太高给0.7将出现 两个猪中间蝴蝶型的情况，故目前保持0.6   #TODO: 注意train的时候的test_cfg
+        #     nms=dict(type='nms', iou_threshold=0.6),    # 从实际情况看到：至少0.5 bbox iou是绝对不够的(随便看就好几副卡去的), 但太高给0.7将出现 两个猪中间蝴蝶型的情况，故目前保持0.6
         #     max_per_img=1000,
-        #     mask_thr_binary=0.9),   # 0.5 是完整的猪（训练时），但会延伸到别的猪。大了会碎，貌似碎点好，别让猪碎没了就行，调到0.9，多识别了一些出来
+        #     mask_thr_binary=0.9),   # 0.5 是完整的猪（训练时），但会延伸到别的猪。大了会碎，貌似碎点好，别让猪碎没了就行，调到0.9，多识别了一些出来， 这个0.9是为了后处理，别在train的时候用，不然影响到模型选择
         # 默认无IOF
         rcnn=dict(
             score_thr=0.5,
@@ -206,8 +206,7 @@ data = dict(
         ],
         classes=classes))
 
-# load_from = '/home/lmw/useful_models/base_model_pig.pth'
-load_from = '/home/lmw/useful_models/epoch_10_BYZ_yufei_pig_fintune.pth'
+load_from = '/home/lmw/useful_models/base_model_pig.pth'
 optimizer = dict(type='SGD', lr=0.001*0.1, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=None)
 # learning policy
@@ -219,7 +218,7 @@ lr_config = dict(
     step=[28],
     )
 #fp16=True
-runner = dict(type='EpochBasedRunner', max_epochs=200)
+runner = dict(type='EpochBasedRunner', max_epochs=12)
 
 checkpoint_config = dict(interval=1)
 log_config = dict(

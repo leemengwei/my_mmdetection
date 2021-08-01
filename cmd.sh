@@ -21,7 +21,7 @@ CUDA_VISIBLE_DEVICES=0,1 PORT=29500 ./tools/dist_train.sh configs/fisheye_pig/yo
 
 # Glance on train
 # analyze train curve
-python tools/analysis_tools/analyze_logs.py plot_curve work_dirs/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig/20210408_192018.log.json  --keys 0_bbox_mAP 0_bbox_mAP_50 # loss_rpn_cls loss_rpn_bbox loss_cls acc loss_bbox loss_mask loss
+python tools/analysis_tools/analyze_logs.py plot_curve work_dirs/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig/20210731_221447.log.json  --keys 0_bbox_mAP 0_bbox_mAP_50 1_bbox_mAP 1_bbox_mAP_50 2_bbox_mAP 2_bbox_mAP_50 3_bbox_mAP 3_bbox_mAP_50 4_bbox_mAP 4_bbox_mAP_50 5_bbox_mAP 5_bbox_mAP_50     # loss_rpn_cls loss_rpn_bbox loss_cls acc loss_bbox loss_mask loss lr
 python tools/analysis_tools/analyze_logs.py plot_curve work_dirs/yolov3_d53_320_273e_coco_pig/20210414_195416.log.json  --keys bbox_mAP bbox_mAP_50 
 
 # TESTS

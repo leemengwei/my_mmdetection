@@ -212,5 +212,5 @@ runner = dict(type='EpochBasedRunner', max_epochs=200)
 
 checkpoint_config = dict(interval=10)
 log_config = dict(
-    interval=10)
+    interval=5)
 workflow = [('train', 1), ('val', 1)]

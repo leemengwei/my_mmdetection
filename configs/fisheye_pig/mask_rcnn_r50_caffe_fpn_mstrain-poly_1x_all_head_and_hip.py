@@ -22,25 +22,17 @@ model = dict(
 # Modify dataset related settings
 dataset_type = 'COCODataset'
 dir_1 = "../dataset/1all_dorm+cut_safe/"
-dir_1_1 = "../dataset/1BYZ_dorm+cut_safe/"
-dir_roi = "../dataset/1BYZ_dorm_roi+cut_safe/"   #有头有尾
+dir_1_1 = "../dataset/1all_dorm_BYZ+cut_safe/"
 dir_1_2 = "../dataset/1huiyan_dorm_raw+cut_safe/"
-dir_roi_1 = "../dataset/1huiyan_dorm_roi+cut_safe/"   #有头有尾
 dir_2 = "../dataset/2all_passage+cut_safe/"
 dir_3 = "../dataset/3all_stage+cut_safe/"
-dir_4 = "../dataset/4all_weights+cut_safe/"   #有头有尾
-dir_4_1 = "../dataset/4all_weights+BYZ+cut_safe/"   #有头有尾
-dir_ = "../dataset/4all_weights+BYZ_nO/"
-dir_ = "../dataset/5misc_background+noise/"
+dir_4 = "../dataset/4all_weights+cut_safe/"   #虽然不是roi cut但是有头有尾
+dir_roi = "../dataset/1all_dorm_BYZ_roi+cut_safe/"   #有头有尾
+dir_roi_1 = "../dataset/1huiyan_dorm_roi+cut_safe/"   #有头有尾
+dir_roi_3 = "../dataset/4all_weights_BYZ_roi+cut_safe/"   #有头有尾
 
-# pigs
-pig_dirs = [dir_1, dir_1_1, dir_1_2, dir_2, dir_3, dir_4, dir_4_1]
-pig_head_hip_dirs = [dir_roi, dir_roi_1, dir_4, dir_4_1]
-safe_pigs_prefix_train = [i+'/train/' for i in pig_dirs]
-safe_pigs_prefix_val = [i+'/val/' for i in pig_dirs]
-safe_pigs_ann_train = [i+'/annotation_coco.json' for i in safe_pigs_prefix_train]
-safe_pigs_ann_val = [i+'/annotation_coco.json' for i in safe_pigs_prefix_val]
 # head and hip
+pig_head_hip_dirs = [dir_roi, dir_roi_1, dir_4, dir_roi_3]
 safe_head_and_hip_prefix_train = [i+'/train/' for i in pig_head_hip_dirs]
 safe_head_and_hip_prefix_val = [i+'/val/' for i in pig_head_hip_dirs]
 safe_head_and_hip_ann_train = [i+'/annotation_coco.json' for i in safe_head_and_hip_prefix_train]

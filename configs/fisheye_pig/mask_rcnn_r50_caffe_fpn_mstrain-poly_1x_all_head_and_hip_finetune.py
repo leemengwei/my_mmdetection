@@ -194,7 +194,7 @@ data = dict(
         classes=classes))
 
 load_from = '/home/lmw/useful_models/base_model_head_hip.pth'
-optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.001*0.1, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict(
@@ -204,9 +204,9 @@ lr_config = dict(
     # warmup_ratio=0.001,
     step=[18, 38])
 #fp16=True
-runner = dict(type='EpochBasedRunner', max_epochs=50)
+runner = dict(type='EpochBasedRunner', max_epochs=12)
 
-checkpoint_config = dict(interval=10)
+checkpoint_config = dict(interval=1)
 log_config = dict(
     interval=10)
 workflow = [('train', 1), ('val', 1)]

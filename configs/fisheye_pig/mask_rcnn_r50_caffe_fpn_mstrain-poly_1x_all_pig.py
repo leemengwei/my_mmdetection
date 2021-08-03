@@ -170,12 +170,12 @@ data = dict(
         classes=classes),
     test=dict(
         type='CocoDataset',
-        #ann_file = safe_pigs_ann_val,
+        ann_file = safe_pigs_ann_val,
         #ann_file = safe_head_and_hip_ann_val,
-        #img_prefix=safe_pigs_prefix_val,
+        img_prefix=safe_pigs_prefix_val,
         #img_prefix=safe_head_and_hip_prefix_val,
-        ann_file=test_dir + '/test_loop.json',
-        img_prefix=test_dir,
+        # ann_file=test_dir + '/test_loop.json',
+        # img_prefix=test_dir,
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(
@@ -208,9 +208,9 @@ lr_config = dict(
     warmup_ratio=0.001,
     step=[150, 175, 185])
 #fp16=True
-runner = dict(type='EpochBasedRunner', max_epochs=200)
+runner = dict(type='EpochBasedRunner', max_epochs=36)
 
-checkpoint_config = dict(interval=10)
+checkpoint_config = dict(interval=1)
 log_config = dict(
-    interval=5)
+    interval=10)
 workflow = [('train', 1), ('val', 1)]

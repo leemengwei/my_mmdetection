@@ -21,7 +21,7 @@ model = dict(
         # 默认无IOF
         rcnn=dict(
             score_thr=0.5,
-            nms=dict(type='nms', iou_threshold=0.55), #至少0.5 bbox iou是绝对不够的
+            nms=dict(type='nms', iou_threshold=0.55), #至少0.5 bbox iou是绝对不够的,
             max_per_img=1000,
             mask_thr_binary=0.5)
             )
@@ -42,7 +42,7 @@ dir_roi_3 = "../dataset/4all_weights_BYZ_roi+cut_safe/"   #有头有尾
 # pigs
 pig_dirs = [dir_1, dir_1_1, dir_1_2, dir_2, dir_3, dir_4]
 pig_head_hip_dirs = [dir_roi, dir_roi_1, dir_4]
-pig_dirs = [dir_1_1]
+pig_dirs = [dir_1_1]            # NOTE 感觉finetune容易过拟合了，先不用了
 safe_pigs_prefix_train = [i+'/train/' for i in pig_dirs]
 safe_pigs_prefix_val = [i+'/val/' for i in pig_dirs]
 safe_pigs_ann_train = [i+'/annotation_coco.json' for i in safe_pigs_prefix_train]   # NOTE: negative samples, empty gt, 负样本手动加到ann了吗！
@@ -178,12 +178,12 @@ data = dict(
         classes=classes),
     test=dict(
         type='CocoDataset',
-        #ann_file = safe_pigs_ann_val,
+        ann_file = safe_pigs_ann_val,
         #ann_file = safe_head_and_hip_ann_val,
-        #img_prefix=safe_pigs_prefix_val,
+        img_prefix=safe_pigs_prefix_val,
         #img_prefix=safe_head_and_hip_prefix_val,
-        ann_file=test_dir + '/test_loop.json',
-        img_prefix=test_dir,
+        # ann_file=test_dir + '/test_loop.json',
+        # img_prefix=test_dir,
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(

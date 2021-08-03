@@ -38,7 +38,7 @@ safe_head_and_hip_prefix_val = [i+'/val/' for i in pig_head_hip_dirs]
 safe_head_and_hip_ann_train = [i+'/annotation_coco.json' for i in safe_head_and_hip_prefix_train]
 safe_head_and_hip_ann_val = [i+'/annotation_coco.json' for i in safe_head_and_hip_prefix_val]
 
-test_dir = "/home/lmw/leemengwei/dataset/images_nolabel_useful/panzhong/"
+test_dir = "/home/lmw/leemengwei/dataset/4all_weights_BYZ_roi+cut_safe/val/"      # 用于生成标签
 # We can use the pre-trained Mask RCNN model to obtain higher performance
 load_from = 'checkpoints/mask_rcnn_r50_caffe_fpn_mstrain-poly_3x_coco_bbox_mAP-0.408__segm_mAP-0.37_20200504_163245-42aa3d00.pth'
 
@@ -192,7 +192,7 @@ data = dict(
         ],
         classes=classes))
 
-optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict(
@@ -202,9 +202,9 @@ lr_config = dict(
     warmup_ratio=0.001,
     step=[150, 175, 185])
 #fp16=True
-runner = dict(type='EpochBasedRunner', max_epochs=200)
+runner = dict(type='EpochBasedRunner', max_epochs=36)
 
-checkpoint_config = dict(interval=10)
+checkpoint_config = dict(interval=1)
 log_config = dict(
     interval=10)
 workflow = [('train', 1), ('val', 1)]

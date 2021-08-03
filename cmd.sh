@@ -26,14 +26,16 @@ python tools/analysis_tools/analyze_logs.py plot_curve work_dirs/yolov3_d53_320_
 
 # TESTS
 # single test:
+# or switch off 'eval' and specify: --format-only to get output json loop!来生成loop json!
 python tools/test.py configs/fisheye_pig/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig.py work_dirs/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig.py/latest.pth --eval bbox segm --out out.pkl --eval-options jsonfile_prefix=./tmp/tmp classwise=True
 python tools/test.py configs/fisheye_pig/yolov3_d53_mstrain-608_273e_coco_pig.py work_dirs/yolov3_d53_320_273e_coco_pig/latest.pth --eval bbox --out out.pkl --eval-options jsonfile_prefix=./tmp/tmp classwise=True
-python tools/test.py configs/fisheye_pig/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig.py work_dirs/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig/latest.pth --eval segm --out seg.pkl --eval-options jsonfile_prefix=./tmp/tmp classwise=True  # or switch off 'eval' and specify: --format-only to get output json loop!
+python tools/test.py configs/fisheye_pig/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig.py work_dirs/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig/latest.pth --eval segm --out seg.pkl --eval-options jsonfile_prefix=./tmp/tmp classwise=True 
 
 # ANALYSIS
-# analyze Error
+# analyze Error， 如果上一步formatonly(并禁用--eval)生成了 json的话
 python tools/analysis_tools/coco_error_analysis.py tmp/tmp.segm.json results --ann=../dataset/4all_weights+cut_safe/val/annotation_coco.json --types='segm'
-# analyze bad & good (convinient)
+
+# analyze bad & good (convinient)   # 根据生成的pkl分开好的坏的，记得更新pkl
 python tools/analysis_tools/analyze_results.py configs/fisheye_pig/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig.py out.pkl work_dirs/ #be sure update pkl
 python tools/analysis_tools/analyze_results.py configs/fisheye_pig/yolov3_d53_mstrain-608_273e_coco_pig.py out.pkl work_dirs/ #be sure update pkl
 python tools/analysis_tools/analyze_results.py configs/fisheye_pig/mask_rcnn_r50_caffe_fpn_mstrain-poly_1x_all_pig.py seg.pkl work_dirs/
